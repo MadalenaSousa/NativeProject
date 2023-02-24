@@ -1,20 +1,45 @@
 import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MusicShop from './components/MusicShop';
+import ShoppingCart from './components/ShoppingCart';
+import Header from './components/Header';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Flor?</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: 'teal',
+              width: '100%'
+            },
+            headerTintColor: 'white'
+          }}
+        >
+          <Stack.Screen 
+            name='Music Shop' 
+            component={MusicShop}
+            options={({ navigation }) => ({ 
+              headerTitle: () => <Header title='Music Shop' navigation={navigation} />,
+            })}
+          />
+          <Stack.Screen 
+            name='Shopping Cart' 
+            component={ShoppingCart}
+            options={{
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 24,
+              }
+            }}
+          />
+        </Stack.Navigator>
+        <StatusBar style="auto" />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
