@@ -6,12 +6,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MusicShop from './components/MusicShop';
 import ShoppingCart from './components/ShoppingCart';
 import Header from './components/Header';
+import { Provider } from 'react-redux';
+import store from './store'
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <Provider store={store}>
+       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             headerStyle: {
@@ -41,5 +44,6 @@ export default function App() {
         </Stack.Navigator>
         <StatusBar style="auto" />
     </NavigationContainer>
+    </Provider>
   );
 }

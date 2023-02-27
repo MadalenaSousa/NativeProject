@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { AntDesign } from '@expo/vector-icons'
+import { FontAwesome } from '@expo/vector-icons';
 
 export default function Header({ title, navigation }) {
     return(
         <View style={styles.header}>
             <Text style={styles.pageTitle}>{title}</Text>
-            <AntDesign.Button size={24} name="shoppingcart" color="white" backgroundColor='transparent' onPress={() => navigation.navigate('Shopping Cart')} />
+            <FontAwesome.Button size={24} name="shopping-cart" color="white" backgroundColor='transparent' onPress={() => navigation.navigate('Shopping Cart')} />
         </View>
     )
 }
