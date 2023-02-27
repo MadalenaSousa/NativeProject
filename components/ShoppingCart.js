@@ -16,7 +16,7 @@ export default function ShoppingCart() {
 
     return(
         <View style={styles.container}>
-            <View>
+            <View style={styles.cartList}>
                 {cartSongs.length > 0 ?
                 <FlatList 
                     keyExtractor={(item) => item.trackId}
@@ -27,7 +27,7 @@ export default function ShoppingCart() {
                         />
                     )}
                 />
-                : <Text>No songs have been added yet to your cart</Text>}
+                : <Text>No songs have been added to your cart yet.</Text>}
             </View>
             <View style={styles.cartDetails}>
                 <View style={styles.cartDetailsRow}>
@@ -75,5 +75,9 @@ const styles = StyleSheet.create({
     buttonTitle: {
         color: 'white',
         fontWeight: 'bold'
+    },
+    cartList: {
+        alignItems: 'center',
+        margin: 10,
     }
   });
