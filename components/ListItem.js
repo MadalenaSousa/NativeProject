@@ -1,8 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import {useDispatch } from 'react-redux';
+import { addSong, removeSong } from '../reducers/songslice';
 
-export default function ListItem({ song }) {
+export default function ListItem({ song, isAdded }) {
+    const dispatch = useDispatch();
+
     return(
         <View style={styles.container}>
             <View style={styles.songInfo}>
@@ -12,7 +16,10 @@ export default function ListItem({ song }) {
             </View>
             <View style={styles.cartInfo}>
                 <Text>{song.trackPrice} $</Text>
-                <FontAwesome.Button size={24} name="shopping-cart" color="black" backgroundColor='transparent' />
+                {isAdded === false ? 
+                <MaterialIcons.Button size={24} name="add-shopping-cart" color="black" backgroundColor='transparent' onPress={() => dispatch(addSong(song))} />
+                :
+                <MaterialIcons.Button size={24} name="remove-shopping-cart" color="black" backgroundColor='transparent' onPress={() => dispatch(removeSong(song))} />}
             </View>
         </View>
     )
@@ -24,7 +31,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      width: '85%',
+      width: '80%',
       padding: 15,
       margin: 10,
       borderWidth: 1,
