@@ -20,7 +20,7 @@ const songSlice = createSlice({
             state.value.cartSongs.push(action.payload);
         },
         removeSong: (state, action) => {
-            state.value.cartSongs = state.value.allSongs.filter(
+            state.value.cartSongs = state.value.cartSongs.filter(
                 song => song.trackId !== action.payload.trackId
             );
         },
