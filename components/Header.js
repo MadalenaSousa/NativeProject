@@ -6,7 +6,10 @@ export default function Header({ title, navigation }) {
     return(
         <View style={styles.header}>
             <Text style={styles.pageTitle}>{title}</Text>
-            <MaterialIcons.Button size={24} name="shopping-cart" color="white" backgroundColor='transparent' onPress={() => navigation.navigate('Shopping Cart')} />
+            <View style={styles.rightCorner}>
+                <MaterialIcons.Button size={24} name="shopping-cart" color="white" backgroundColor='transparent' onPress={() => navigation.navigate('Shopping Cart')} />
+                <MaterialIcons.Button size={24} name="logout" color="white" backgroundColor='transparent' />
+            </View>
         </View>
     )
 }
@@ -22,5 +25,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 24,
         color: 'white',
+    },
+    rightCorner: {
+        flexDirection: 'row',
+        alignItems: 'center'
     }
   });
