@@ -50,10 +50,10 @@ const styles = StyleSheet.create({
     cartInfo: {
         flexDirection: 'row',
         alignItems: 'center',
-        maxWidth: '30%',
+        maxWidth: '20%',
     },
     songInfo: {
-        maxWidth: '70%',
+        maxWidth: '60%',
         flexDirection: 'row',
         alignItems: 'center'
     },
