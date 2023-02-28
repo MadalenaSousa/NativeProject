@@ -21,11 +21,14 @@ export default function MusicShop() {
             //console.log(data.results);
             //setSongs(data.results)
 
-            dispatch(setAllSongs(data.results))
-            //handlePageChange(currentPage)
+            dispatch(setAllSongs(data.results)) 
         })
         .catch((error) => console.log(error));
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        handlePageChange(1)
+    }, [filteredSongs]);
 
     function handlePageChange(page) {
         const from = (page - 1) * songsPerPage;
@@ -47,7 +50,7 @@ export default function MusicShop() {
             </View>
             <FlatList 
                 keyExtractor={(item) => item.trackId}
-                data={filteredSongs}
+                data={splitSongs}
                 renderItem={({item}) => (
                     <ListItem 
                         song={item}
@@ -59,7 +62,7 @@ export default function MusicShop() {
                 totalItems={filteredSongs.length}
                 itemsPerPage={songsPerPage}
                 currentPage={currentPage}
-                onPageChange={() => {}}
+                onPageChange={handlePageChange}
             />
         </View>
     )
