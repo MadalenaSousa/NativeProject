@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         borderRightColor: 'transparent',
         borderBottomColor: 'white',
         color: 'white',
-        width: 350,
+        width: 250,
         margin: 10,
         padding: 5
     },
