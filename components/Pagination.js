@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Pagination ({ totalItems, itemsPerPage, currentPage, onPageChange }) {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -112,7 +113,7 @@ export default function Pagination ({ totalItems, itemsPerPage, currentPage, onP
         onPress={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        <Text>{'<'}</Text>
+        <MaterialIcons size={24} name="arrow-left" />
       </TouchableOpacity>
 
       {createPageButtons()}
@@ -122,7 +123,7 @@ export default function Pagination ({ totalItems, itemsPerPage, currentPage, onP
         onPress={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        <Text>{'>'}</Text>
+        <MaterialIcons size={24} name="arrow-right" />
       </TouchableOpacity>
     </View>
   );
