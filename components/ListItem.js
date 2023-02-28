@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import {useDispatch } from 'react-redux';
 import { addSong, removeSong } from '../reducers/songslice';
@@ -10,9 +10,14 @@ export default function ListItem({ song, isAdded }) {
     return(
         <View style={styles.container}>
             <View style={styles.songInfo}>
-                <Text style={styles.title}>{song.trackName}</Text>
-                <Text>{song.collectionName}</Text>
-                <Text>{song.artistName}</Text>
+                <View>
+                    <Image style={styles.trackImage} source={{ uri: song.artworkUrl60 }} />
+                </View>
+                <View>
+                    <Text style={styles.title}>{song.trackName}</Text>
+                    <Text>{song.collectionName}</Text>
+                    <Text>{song.artistName}</Text>
+                </View>
             </View>
             <View style={styles.cartInfo}>
                 <Text>{song.trackPrice} $</Text>
@@ -31,7 +36,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      width: '80%',
+      width: '90%',
       padding: 15,
       margin: 10,
       borderWidth: 1,
@@ -49,5 +54,12 @@ const styles = StyleSheet.create({
     },
     songInfo: {
         maxWidth: '65%',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    trackImage: {
+        width: 50,
+        height: 50,
+        marginRight: 10,
     }
   });
