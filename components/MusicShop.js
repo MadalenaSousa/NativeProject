@@ -49,6 +49,7 @@ export default function MusicShop() {
                 />
             </View>
             <FlatList 
+                style={styles.list}
                 keyExtractor={(item) => item.trackId}
                 data={splitSongs}
                 renderItem={({item}) => (
@@ -84,5 +85,9 @@ const styles = StyleSheet.create({
         width: 350,
         margin: 10,
         padding: 5
+    },
+    list: {
+        alignContent: 'stretch',
+        width: '100%'
     }
   });

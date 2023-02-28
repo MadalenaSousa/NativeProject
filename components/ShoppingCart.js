@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ScrollView, TouchableOpacity } from 'react-native';
 import ListItem from './ListItem';
 import { useSelector } from 'react-redux';
 
@@ -16,34 +16,37 @@ export default function ShoppingCart() {
 
     return(
         <View style={styles.container}>
-            <View style={styles.cartList}>
+            <ScrollView>
                 {cartSongs.length > 0 ?
-                <FlatList 
-                    keyExtractor={(item) => item.trackId}
-                    data={cartSongs}
-                    renderItem={({item}) => (
+                <View>
+                    {cartSongs.map((song) => (
                         <ListItem 
-                            song={item}
+                            key={song.trackId}
+                            song={song}
                         />
-                    )}
-                />
-                : <Text>No songs have been added to your cart yet.</Text>}
-            </View>
-            <View style={styles.cartDetails}>
-                <View style={styles.cartDetailsRow}>
-                    <Text style={styles.title}>Song Amount</Text>
-                    <Text>{cartSongs.length}</Text>
+                    ))}
                 </View>
-                <View style={styles.cartDetailsRow}>
-                    <Text style={styles.title}>Price Total</Text>
-                    <Text>{priceSum()} $</Text>
+                : 
+                <View style={styles.noItems} >
+                    <Text >No songs have been added to your cart yet.</Text>
                 </View>
-            </View>
-            <TouchableOpacity
-                style={styles.button}
-            >
-                <Text style={styles.buttonTitle}>PURCHASE</Text>
-            </TouchableOpacity>
+                }
+                <View style={styles.cartDetails}>
+                    <View style={styles.cartDetailsRow}>
+                        <Text style={styles.title}>Song Amount</Text>
+                        <Text>{cartSongs.length}</Text>
+                    </View>
+                    <View style={styles.cartDetailsRow}>
+                        <Text style={styles.title}>Price Total</Text>
+                        <Text>{priceSum()} $</Text>
+                    </View>
+                </View>
+                <TouchableOpacity
+                    style={styles.button}
+                >
+                    <Text style={styles.buttonTitle}>PURCHASE</Text>
+                </TouchableOpacity>
+            </ScrollView>
         </View>
     )
 }
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold'
     },
-    cartList: {
+    noItems: {
         alignItems: 'center',
         margin: 10,
     }

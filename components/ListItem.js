@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      width: '90%',
       padding: 15,
       margin: 10,
       borderWidth: 1,
@@ -53,7 +52,7 @@ const styles = StyleSheet.create({
         maxWidth: '30%',
     },
     songInfo: {
-        maxWidth: '65%',
+        maxWidth: '70%',
         flexDirection: 'row',
         alignItems: 'center'
     },

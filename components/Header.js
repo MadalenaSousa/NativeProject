@@ -20,10 +20,10 @@ export default function Header({ title, navigation }) {
 
 const styles = StyleSheet.create({
     header: {
-      width: '95%',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
+      width: '98%',
     },
     pageTitle: {
         fontWeight: 'bold',
