@@ -11,7 +11,7 @@ import Login from './Login';
 const Stack = createNativeStackNavigator();
 
 export default function Content() {
-  const { isLogged } = useSelector(state => state.user.value) 
+  const { isLogged } = useSelector((state)  => (state && state.user && state.user.value ? state.user.value : false)) 
 
   return (
        <NavigationContainer>

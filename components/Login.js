@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { login } from '../reducers/userslice';
 
-export default function Login({ navigation }) {
+export default function Login() {
     const dispatch = useDispatch();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

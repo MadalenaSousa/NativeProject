@@ -7,9 +7,8 @@ import Pagination from './Pagination';
 
 export default function MusicShop() {
     const dispatch = useDispatch();
-    const { allSongs } = useSelector(state => state.song.value)
-    const { cartSongs } = useSelector(state => state.song.value)
-    const { filteredSongs } = useSelector(state => state.song.value)
+    const { cartSongs } = useSelector((state) => (state && state.song && state.song.value ? state.song.value : []))
+    const { filteredSongs } = useSelector((state) => (state && state.song && state.song.value ? state.song.value : []))
     const songsPerPage = 5;
     const [currentPage, setCurrentPage] = useState(1);
     const [splitSongs, setSplitSongs] = useState(filteredSongs);
@@ -19,7 +18,6 @@ export default function MusicShop() {
         .then((response) => response.json())
         .then((data) => {
             //console.log(data.results);
-            //setSongs(data.results)
 
             dispatch(setAllSongs(data.results)) 
         })

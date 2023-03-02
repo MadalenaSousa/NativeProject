@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import ListItem from './ListItem';
 import { useSelector } from 'react-redux';
 
 export default function ShoppingCart() {
-    const { cartSongs } = useSelector(state => state.song.value)
+    const { cartSongs } = useSelector((state) => (state && state.song && state.song.value ? state.song.value : []))
 
     const priceSum = () => {
         let price = 0;
