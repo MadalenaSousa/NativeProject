@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { StyleSheet, Text, View, FlatList, TextInput } from 'react-native';
+import { StyleSheet, View, FlatList, TextInput } from 'react-native';
 import { setAllSongs, filterSongs } from '../reducers/songslice';
 import ListItem from './ListItem';
 import Pagination from './Pagination';
