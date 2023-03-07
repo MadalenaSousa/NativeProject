@@ -8,13 +8,14 @@ import Pagination from './Pagination';
 export default function MusicShop() {
     const dispatch = useDispatch();
     const { cartSongs } = useSelector((state) => (state && state.song && state.song.value ? state.song.value : []))
+    const { favoriteSongs } = useSelector((state) => (state && state.song && state.song.value ? state.song.value : []))
     const { filteredSongs } = useSelector((state) => (state && state.song && state.song.value ? state.song.value : []))
     const songsPerPage = 5;
     const [currentPage, setCurrentPage] = useState(1);
     const [splitSongs, setSplitSongs] = useState(filteredSongs);
     
     useEffect(() => {
-        fetch("https://itunes.apple.com/search?term=rock&entity=musicTrack&limit=200")
+        fetch("http://itunes.apple.com/search?term=rock&entity=musicTrack&limit=200")
         .then((response) => response.json())
         .then((data) => {
             //console.log(data.results);
@@ -54,6 +55,7 @@ export default function MusicShop() {
                     <ListItem 
                         song={item}
                         isAdded={cartSongs.find(cartSong => cartSong.trackId === item.trackId) !== undefined}
+                        isFaved={favoriteSongs.find(favoriteSong => favoriteSong.trackId === item.trackId) !== undefined}
                     />
                 )}
             />

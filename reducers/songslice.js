@@ -4,7 +4,8 @@ const initialState = {
     value: {
         allSongs: [],
         cartSongs: [],
-        filteredSongs: []
+        filteredSongs: [],
+        favoriteSongs: []
     }
 }
 
@@ -28,10 +29,18 @@ const songSlice = createSlice({
             state.value.filteredSongs = state.value.allSongs.filter((song) =>
                 song.trackName.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").includes(action.payload.toLowerCase())
             );
+        },
+        addFavorite: (state, action) => {
+            state.value.favoriteSongs.push(action.payload);
+        },
+        removeFavorite: (state, action) => {
+            state.value.favoriteSongs = state.value.favoriteSongs.filter(
+                song => song.trackId !== action.payload.trackId
+            );
         }
     }
 })
 
-export const { setAllSongs, addSong, removeSong, filterSongs } = songSlice.actions
+export const { setAllSongs, addSong, removeSong, filterSongs, addFavorite, removeFavorite } = songSlice.actions
 
 export default songSlice.reducer;

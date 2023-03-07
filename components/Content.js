@@ -7,6 +7,8 @@ import MusicShop from './MusicShop';
 import ShoppingCart from './ShoppingCart';
 import Header from './Header';
 import Login from './Login';
+import FavoriteSongs from './FavoriteSongs';
+import Profile from './Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,12 +32,32 @@ export default function Content() {
               name='Music Shop' 
               component={MusicShop}
               options={({ navigation }) => ({ 
-                headerTitle: () => <Header title='Music Shop' navigation={navigation} />,
+                headerTitle: () => <Header title='Music Shop' navigation={navigation} isLogged={isLogged} />,
               })}
             />
             <Stack.Screen 
               name='Shopping Cart' 
               component={ShoppingCart}
+              options={{
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize: 24,
+                }
+              }}
+            />
+            <Stack.Screen 
+              name='Favorite Songs' 
+              component={FavoriteSongs}
+              options={{
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize: 24,
+                }
+              }}
+            />
+            <Stack.Screen 
+              name='Profile' 
+              component={Profile}
               options={{
                 headerTitleStyle: {
                   fontWeight: 'bold',

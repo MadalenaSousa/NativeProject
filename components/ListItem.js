@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import {useDispatch } from 'react-redux';
-import { addSong, removeSong } from '../reducers/songslice';
+import { addSong, removeSong, addFavorite, removeFavorite } from '../reducers/songslice';
 
-export default function ListItem({ song, isAdded }) {
+export default function ListItem({ song, isAdded, isFaved }) {
     const dispatch = useDispatch();
 
     return(
@@ -25,6 +25,10 @@ export default function ListItem({ song, isAdded }) {
                 <MaterialIcons.Button size={24} name="add-shopping-cart" color="black" backgroundColor='transparent' onPress={() => dispatch(addSong(song))} />
                 :
                 <MaterialIcons.Button size={24} name="remove-shopping-cart" color="black" backgroundColor='transparent' onPress={() => dispatch(removeSong(song))} />}
+                {isFaved === false ? 
+                <MaterialIcons.Button size={24} name="favorite-outline" color="black" backgroundColor='transparent' onPress={() => dispatch(addFavorite(song))} />
+                :
+                <MaterialIcons.Button size={24} name="favorite" color="black" backgroundColor='transparent' onPress={() => dispatch(removeFavorite(song))} />}
             </View>
         </View>
     )
@@ -50,10 +54,10 @@ const styles = StyleSheet.create({
     cartInfo: {
         flexDirection: 'row',
         alignItems: 'center',
-        maxWidth: '20%',
+        maxWidth: '35%',
     },
     songInfo: {
-        maxWidth: '60%',
+        maxWidth: '45%',
         flexDirection: 'row',
         alignItems: 'center'
     },
