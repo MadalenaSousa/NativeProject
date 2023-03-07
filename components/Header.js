@@ -6,7 +6,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Header({ title, navigation, isLogged }) {
     const dispatch = useDispatch();
-    console.log(isLogged)
 
     return(
         <View style={styles.header}>
